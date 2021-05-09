@@ -1,30 +1,26 @@
 extends layout
 
 block content
-  h1 Image Repository
+  h1.text-center Image Repository
   .container
     h2 Image Upload
     .row
       div(class="col-sm-8 mt-3")
 
       if user
+        h6 You are currently Logged in #[a(href="/auth/logout") Log Out]
         h4 Select Images to upload
-
-        a(href="/auth/logout") Log Out
 
         form(action = "/upload", method="POST", enctype="multipart/form-data")
         .custom-file
           input(type="file",  class="custom-file-input", name="photos", id="photos", multiple)
-        div(class="mb-3 form-check")
+        div(class="form-check")
           input(type="checkbox", class = "form-check-input", name="private" id="private", value="true")
           label(for="private", class="form-label") Private
         button(type="submit", class="btn btn-primary") Submit
 
       else
-        h4 Please
-          a(href="/auth") Log In or Sign Up
-        h4 to continue
-
+        h4 Please #[a(href="/auth") Log In or Sign Up] to Continue
     hr
 
     h2 Gallery
