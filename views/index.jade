@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  h1 Image Repository
+  .container
+    h2 Image Upload
+    .row
+      div(class="col-sm-8 mt-3")
+
+      if user
+        h4 Select Images to upload
+
+        a(href="/auth/logout") Log Out
+
+        form(action = "/upload", method="POST", enctype="multipart/form-data")
+        .custom-file
+          input(type="file",  class="custom-file-input", name="photos", id="photos", multiple)
+        div(class="mb-3 form-check")
+          input(type="checkbox", class = "form-check-input", name="private" id="private", value="true")
+          label(for="private", class="form-label") Private
+        button(type="submit", class="btn btn-primary") Submit
+
+      else
+        h4 Please
+          a(href="/auth") Log In or Sign Up
+        h4 to continue
+
+    hr
+
+    h2 Gallery
+    section.mt-5
+      .row
+        each image in images
+          if image.imageBase64
+            div.col-3
+              div(class="card shadow")
+                img(src=`data:${image.contentType};base64,${image.imageBase64}`)
+                .card-body
+                  h5.card-title #{image.filename}
+                  - const visibility = image.private? "private":"public"
+                  p.text-secondary #{visibility}
+
+                  if JSON.stringify(user) === JSON.stringify(image.user)
+                    a(href="/delete/" + image._id) Delete
+                    br
+
+                    if (image.private === true)
+                      a(href="/update/private/" + image._id + "/" + image.private) Make Public
+                    else
+                      a(href="/update/private/" + image._id + "/" + image.private) Make Private

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  div
+    h2 Login
+    form(action="/auth/login" method="POST" class="form-signin")
+      label(for="username") Name
+      input(type="text" name="username" id="username")
+      label(for="password") Password
+      input(type="password" name="password" id="password")
+      button(type="submit", class="btn btn-primary") Login
+  hr
+  div
+    h2 Register
+    form(action="/auth/register" method="POST")
+      label(for="username") Name
+      input(type="text" name="username" id="username")
+      label(for="password") Password
+      input(type="password" name="password" id="password")
+      label(for="passwordConfirm") Confirm Password
+      input(type="password" name="passwordConfirm" id="passwordConfirm")
+      button(type="submit", class="btn btn-primary") Register
+
