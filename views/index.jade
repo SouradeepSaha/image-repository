@@ -12,12 +12,12 @@ block content
         h4 Select Images to upload
 
         form(action = "/upload", method="POST", enctype="multipart/form-data")
-        .custom-file
-          input(type="file",  class="custom-file-input", name="photos", id="photos", multiple)
-        div(class="form-check")
-          input(type="checkbox", class = "form-check-input", name="private" id="private", value="true")
-          label(for="private", class="form-label") Private
-        button(type="submit", class="btn btn-primary") Submit
+          .custom-file
+            input(type="file",  class="custom-file-input", name="photos", id="photos", multiple)
+          div(class="form-check")
+            input(type="checkbox", class = "form-check-input", name="private" id="private", value="true")
+            label(for="private", class="form-label") Private
+          button(type="submit", class="btn btn-primary") Submit
 
       else
         h4 Please #[a(href="/auth") Log In or Sign Up] to Continue

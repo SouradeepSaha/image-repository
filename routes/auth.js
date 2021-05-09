@@ -29,7 +29,7 @@ router.post("/register", (req, res, next) => {
       console.log(err);
       res.send(err).status(400);
     }
-    res.render("test");
+    res.redirect("/");
   });
 });
 
