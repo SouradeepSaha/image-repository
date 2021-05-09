@@ -25,4 +25,7 @@ Clone this project from git and run the command ```npm install ``` to install th
 - Display Poster name for each image
 
 ## Demo
+You can take a look at the project [here](https://shopify-backend-challenge2021.herokuapp.com/)
+The login details used in the demo are ```username:test``` and ```passowrd:1234```.
+
 ![alt text](https://github.com/SouradeepSaha/image-repository/blob/main/demo.gif "Demo")
